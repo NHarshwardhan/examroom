@@ -1,0 +1,126 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@gmail.com",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "email": "student@gmail.com",
+      "password": "student",
+      "role": "student"
+    },
+    {
+      "name": "Ervin Howell",
+      "email": "ervin@gmail.com",
+      "password": "ervin",
+      "role": "student",
+      "id": 3
+    },
+    {
+      "name": "yuvraj",
+      "email": "yuvi@gmail.com",
+      "password": "yuvraj",
+      "role": "student",
+      "id": 4
+    }
+  ],
+  "papers": {
+    "CEH": [
+      {
+        "Qid": 1,
+        "Question": "Which Company is the best on this planet",
+        "Option1": "EC-Council",
+        "Option2": "CompTIA",
+        "Option3": "ISACA",
+        "Option4": "(ISC)2",
+        "Answer": "ISACA"
+      },
+      {
+        "Qid": 2,
+        "Question": "Which Company is not the best on this planet",
+        "Option1": "Koenig",
+        "Option2": "CompTIA",
+        "Option3": "ISACA",
+        "Option4": "(ISC)2",
+        "Answer": "CompTIA"
+      }
+    ],
+    "ECSA": [
+      {
+        "Qid": 1,
+        "Question": "Which Company is the best on this planet",
+        "Option1": "EC-Council",
+        "Option2": "ECSA",
+        "Option3": "ISACA",
+        "Option4": "(ISC)2",
+        "Answer": "ISACA"
+      },
+      {
+        "Qid": 2,
+        "Question": "Which Company is not the best on this planet",
+        "Option1": "EC-Council",
+        "Option2": "KOENIG ECSA",
+        "Option3": "ISACA",
+        "Option4": "(ISC)2",
+        "Answer": "ECSA"
+      }
+    ]
+  },
+  "coursename": [
+    {
+      "id": 1,
+      "coursekey": "CEH",
+      "coursename": "CERTIFIED ETHICAL HACKER",
+      "duration": 4
+    },
+    {
+      "id": 2,
+      "coursekey": "ECSA",
+      "coursename": "EC-COUNCIL CERTIFIED SECURITY ANALYST",
+      "duration": 3
+    },
+    {
+      "id": 1,
+      "coursekey": "CDM",
+      "coursename": "CERTIFIED DIGITAL MARKETER",
+      "duration": 2
+    },
+    {
+      "id": 1,
+      "coursekey": "PCM",
+      "coursename": "PHYSICS CHEMISTRY MATH",
+      "duration": 5
+    }
+  ],
+  "approvedStudent": [
+    {
+      "name": "Ervin Howell",
+      "email": "ervin@gmail.com",
+      "password": "ervin",
+      "role": "student",
+      "id": 3,
+      "examkey": "CEH",
+      "examname": "CERTIFIED ETHICAL HACKER"
+    },
+    {
+      "name": "yuvraj",
+      "email": "yuvi@gmail.com",
+      "password": "yuvraj",
+      "role": "student",
+      "id": 4,
+      "examkey": "ECSA",
+      "examname": "EC-COUNCIL CERTIFIED SECURITY ANALYST"
+    },
+    {
+      "id": 2,
+      "email": "student@gmail.com",
+      "password": "student",
+      "role": "student",
+      "examkey": "CDM",
+      "examname": "CERTIFIED DIGITAL MARKETER"
+    }
+  ]
+}

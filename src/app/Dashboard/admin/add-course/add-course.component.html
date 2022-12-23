@@ -1,0 +1,63 @@
+<div class="row mt-4 mb-4 teal lighten-3 z-depth-3">
+  <div class="col-md-12 ">
+      <h1 class="mt-3 center white-text lighten-4"><strong>ADD COURSE PANEL</strong></h1>
+  </div>
+</div>
+<div class="row mt-5 " >
+  <div class="col-md-12  mt-4">
+   <form [formGroup]="courseInfo">
+    <!-- Select Student -->
+    <div class="row ">
+      <div class="col-md-3 mt-4  ">
+          <h2 class=" purple-text darken-3 right   ">EXAM CODE</h2>
+      </div>
+      <div class="offset-md-1 col-md-8 " >
+        <div class="input-field col s6">
+          <input id="code" type="text" class="validate" formControlName="coursekey">
+          <label style="font-size: 17px;" for="code">Code</label>
+        </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-md-3 mt-4   ">
+          <h2 class=" purple-text darken-3 right  ">EXAM NAME</h2>
+      </div>
+      <div class="offset-md-1 col-md-8 " >
+        <div class="input-field col s6">
+        <input id="name" type="text" class="validate" formControlName="coursename">
+        <label style="font-size: 17px;" for="name"> Name</label>
+      </div>
+      </div>
+    </div>
+    <div class="row ">
+      <div class="col-md-3 mt-4  ">
+          <h2 class=" purple-text darken-3 right  ">EXAM DURATION</h2>
+      </div>
+      <div class="offset-md-1 col-md-8 " >
+        <div class="input-field col s6">
+          <input id="duration" type="number" class="validate" formControlName="duration">
+          <label style="font-size: 17px;" for="duration" >Duration(in hrs)</label>
+        </div>
+      </div>
+    </div>
+  </form>
+ </div>
+</div>
+
+<!-- BUTTON -->
+<div class="row mt-1">
+  <div class="offset-md-4 col-md-7 mt-5 start  ">
+    <button [disabled]="courseAddStatus"  class="btn waves-effect green darken-3 mt-2 " (click)="saveCourse()">{{courseAddStatus?'saved successfully':'save'}}
+            <i class="material-icons right">{{courseAddStatus?'done_all':'save'}}</i>
+    </button>
+    &nbsp;&nbsp;&nbsp;
+    <button [disabled]="!courseAddStatus" class="btn waves-effect purple darken-3 mt-2" (click)="clearCourse()">Add New
+      <i class="material-icons right">add</i>
+    </button>
+
+
+  </div>
+
+</div>
+
+

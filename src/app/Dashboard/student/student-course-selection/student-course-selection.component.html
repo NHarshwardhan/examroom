@@ -1,0 +1,45 @@
+<div class="row " style="height: 87vh;" >
+  <div class="col-md-12  white lighten-3 lighten-4 z-depth-5 ">
+      <div class="row  white lighten-3 lighten-4 accent-4">
+         <div class="col-md-12   center mt-5  ">
+               <h1 style=" font-size:60px;line-height:70px;font-family: 'Monoton', cursive;
+               "  class="h4" ><span class="red-text">K  </span> <span class="indigo-text">N</span></h1>
+               <strong>Examiation Hall</strong>
+         </div>
+      </div>
+      <br>
+
+      <div class="row mt-3">
+        <div class="col-md-12">
+          <img class="responsive-img mb-5 rounded " src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" alt="">
+
+        </div>
+      </div>
+
+      <div class="row mt-2 ">
+        <div class="col-md-12 mt-4  ">
+          <mat-form-field >
+            <mat-label class="text-indigo darken-4">SELECT EXAM</mat-label>
+            <mat-select [(ngModel)]="selectedCourse" [disabled]="isExamStart">
+              <mat-option *ngFor="let c of Courses" [value]="c">{{c}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 ">
+          <button *ngIf="selectedCourse" [disabled]="isExamStart || selectedCourse==''"  class=" btn waves-effect purple darken-3 mt-5 " (click)="selectCourseByUser()"> Start Exam
+            <i class="material-icons right">thumb_up</i>
+          </button>
+          <p *ngIf="!selectedCourse" class="z-depth-5 h5 red-text darken-3 mt-5" style="font-family: 'Noto Sans', sans-serif;padding:10px">
+              Please Connect To Administrator For Exam
+          </p>
+        </div>
+      </div>
+  </div>
+
+</div>
+
+
+

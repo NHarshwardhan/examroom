@@ -1,0 +1,108 @@
+<div class="preloader-wrapper big active loader"  *ngIf="isLoading else elseBlock">
+  <div class="spinner-layer spinner-blue">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+
+  <div class="spinner-layer spinner-red">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+
+  <div class="spinner-layer spinner-yellow">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+
+  <div class="spinner-layer spinner-green">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+</div>
+
+<ng-template #elseBlock>
+  <div class="row mt-4 mb-4 teal lighten-3 z-depth-3">
+    <div class="col-md-12 ">
+        <h1 class="mt-3 center white-text lighten-4"><strong>UPLOAD QUESTION PANEL</strong></h1>
+    </div>
+  </div>
+  <div class="row mt-5 " >
+    <div class="col-md-12  mt-4 ">
+
+     <!-- Select Exam -->
+      <div class="row">
+        <div class=" col-md-3 mt-3">
+            <h2 class=" purple-text darken-3 right">SELECT COURSE</h2>
+        </div>
+        <div class="offset-md-1 col-md-6 mt-1 " >
+          <mat-form-field  style=" width:40vw" >
+            <mat-label style="font-size: 17px;" class="text-indigo darken-4">Course</mat-label>
+            <mat-select [(ngModel)]="selectedCourse" (selectionChange)="selectCourseByUser()" >
+              <mat-option *ngFor="let c of coursename" [value]="c">{{c.coursename}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- File Upload Section -->
+      <div class="row mt-5">
+        <div class=" col-md-3 mt-3">
+            <h2 class=" purple-text darken-3 right">CHOOSE FILE</h2>
+        </div>
+        <div class="offset-md-1 col-md-6 mt-4">
+
+          <input type="file" name="mcqfile" (change)="onFileChange($event)"/>
+          <mat-hint class="pruple-text lighten-4">(.xls or .xlsx)</mat-hint>
+
+        </div>
+      </div>
+
+     <!-- Approve Button -->
+     <div class="row mt-5">
+      <div class="offset-md-4 col-md-7 mt-5 start  ">
+        <button [disabled]="uploadStatus"  class="mt-3 btn waves-effect green darken-3 mt-5 " (click)="uploadCourse()"> {{uploadStatus?'Uploaded Successfully':'Upload'}}
+          <i class="material-icons right">upload_file</i>
+        </button>
+        &nbsp;&nbsp;
+        <button [disabled]="!uploadStatus" class="mt-3 btn waves-effect purple darken-3 mt-5 " (click)="clearStudent()">Add New
+          <i class="material-icons right">add</i>
+        </button>
+
+
+      </div>
+
+    </div>
+
+     <!-- Status Message -->
+     <div class="row mt-2">
+      <div class="offset-md-5 col-md-5 start  ">
+
+      </div>
+
+     </div>
+
+   </div>
+  </div>
+
+</ng-template>
+

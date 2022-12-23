@@ -1,0 +1,32 @@
+<div class="row mt-4   " style="height: 88vh;" >
+  <div class="col-md-2  white lighten-3 lighten-4 z-depth-5 ">
+      <div class="row  white lighten-3 lighten-4 accent-4">
+         <div class="col-md-12   center mt-5  ">
+               <h1 style=" font-size:60px;line-height:70px;font-family: 'Monoton', cursive;
+               "  class="h4" ><span class="red-text">K  </span> <span class="indigo-text">N</span></h1>
+               <strong>Examiation Hall</strong>
+         </div>
+      </div>
+      <br>
+     <br><br>
+      <div class="row  ">
+        <div class="col-md-12 mt-4 right ">
+          <ul class="nav flex-column">
+            <li class="nav-item mt-3  btn waves-effect red lighten-2 ">
+              <a class="nav-link active white-text h6  " aria-current="page" [routerLink]="['addcourse']" >Add Course</a>
+            </li>
+            <li class="nav-item mt-3 btn waves-effect red lighten-2">
+              <a class="nav-link white-text h6 " [routerLink]="['approved']">Approve Student</a>
+            </li>
+            <li class="nav-item mt-3 btn waves-effect red lighten-2">
+              <a class="nav-link white-text h6 " [routerLink]="['upload']" >Upload Question</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+  </div>
+  <div class="col-md-10  z-depth-3  ">
+     <router-outlet></router-outlet>
+  </div>
+</div>
+

@@ -1,0 +1,364 @@
+
+<div class="row d-flex  h-100 z-depth-5 whitelighten-5 " *ngIf="isDisablePanel && !scoreStatus">
+  <div class="col-md-12   justify-content-center align-self-center " >
+    <div class="row  ">
+      <div class="col-md-12 center  ">
+
+          <h1 class=" purple-text darken-4 " style="font-size:30px ;font-family: 'Noto Sans', sans-serif;
+          "
+          >  -: Important Instructions :- </h1>
+
+        <br />
+
+
+        <div class="row  ">
+          <div class=" col-md-4 mt-3  " >
+            <div class="card-panel  red lighten-4 z-depth-4" style="width: 380px;height:200px; border-radius:50px">
+              <h1 class=" mt-5  h5"  style="font-size:35px;font-family: 'Rubik Dirt', cursive;"> SELECT EXAM
+            </h1>
+            </div>
+          </div>
+
+        <!-- </div> -->
+        <!-- <div class="row"> -->
+          <div class="col-md-5 mt-3   " >
+            <div class="card-panel orange lighten-4  z-depth-4 " style="width: 480px;height:200px; border-radius:50px">
+              <h1 class=" mt-5  h5"  style="font-size:35px;font-family: 'Rubik Dirt', cursive;"> START EXAM
+              </h1>
+            </div>
+          </div>
+        <!-- </div> -->
+        <!-- <div class="row"> -->
+          <div class="col-md-3 mt-3 ">
+            <div class="card-panel light-blue lighten-3 z-depth-4" style="width: 300px;height:200px; border-radius:50px">
+              <h1 class=" mt-5  h5"  style="font-size:35px;font-family: 'Rubik Dirt', cursive;">&nbsp;&nbsp; GET SCORE
+              </h1>
+            </div>
+          </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- <div
+  *ngIf="!startExam"
+  class="
+    row
+    d-flex
+    h-100
+    indigo
+    lighten-4
+    z-depth-2
+    animate__animated animate__backInLeft
+  "
+>
+  <div class="col-md-12 center justify-content-center align-self-center">
+    <h1><strong>EXAM LOADING</strong></h1>
+
+    <div
+      *ngFor="let color of loadingColor"
+      [ngClass]="'mx-1 spinner-grow text-' + color"
+      role="status"
+    ></div>
+  </div>
+</div> -->
+
+<!-- Loadin ICON -->
+<div class="preloader-wrapper big active loader"  *ngIf="showLoadingPage else elseBlock">
+  <div class="spinner-layer spinner-blue">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+
+  <div class="spinner-layer spinner-red">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+
+  <div class="spinner-layer spinner-yellow">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+
+  <div class="spinner-layer spinner-green">
+    <div class="circle-clipper left">
+      <div class="circle"></div>
+    </div><div class="gap-patch">
+      <div class="circle"></div>
+    </div><div class="circle-clipper right">
+      <div class="circle"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Exam Paper -->
+<ng-template #elseBlock>
+  <div
+  *ngIf="!isDisablePanel && !scoreStatus"
+  class="
+    row
+    d-flex
+    h-100
+    white
+    lighten-4
+    z-depth-2
+    animate__animated animate__fadeIn
+  "
+>
+  <div class="col-md-12">
+    <!-- Header -->
+    <div class="row mt-4 mb-4">
+      <div class="col-md-3">
+        <h1 class="z-depth-3 h1 text-danger" style="font-size: 29px">
+          <strong>KN</strong> | <span class="text-dark">EXAM CENTER</span>
+        </h1>
+      </div>
+      <div class="offset-md-1 col-md-4 mt-4">
+        <h2 class="indigo-text darken-4 center">{{ testName }}</h2>
+      </div>
+      <div class="col-md-3 mt-2">
+        <h2 class="h3 purple-text darken-4 center" style="font-size: 30px">
+          &nbsp;&nbsp; {{ counter | timerFormat }}
+        </h2>
+      </div>
+      <div class="col-md-1 mt-2">
+        <button
+          style="font-size: 16px"
+          class="right btn waves-effect waves-light red accent-4"
+          name="action"
+          (click)="finalSubmit()"
+        >
+          End Test
+        </button>
+      </div>
+    </div>
+    <!-- Main Question Section -->
+    <div class="row mt-3 ml-4">
+      <div class="col-md-9 mt-4">
+        <ng-container *ngFor="let paper of examPaper">
+          <div
+            class="row mt-4 "
+            *ngIf="paper.Qid === questionnumber"
+          >
+            <div class="col-md-12 mt-4">
+              <h1 class="mb-2 black-text" style="font-family: 'Poppins', sans-serif">
+                <span class="red-text darken-4" style="font-weight: bolder;">{{ questionnumber }}</span>.{{ paper.Question }}
+              </h1>
+              <br />
+              <p>
+                <label class="h3">
+                  <input
+                    [attr.checked]="paper.Option1  === onButtonQuesOPenSetAnswer ? true : null"
+                    name="answer"
+                    type="radio"
+                    value="{{ paper.Option1 }}"
+                    (change)="onRadioButtonChange($event)"
+                  />
+                  <span> {{ paper.Option1 }}</span>
+                </label>
+              </p>
+              <p>
+                <label class="h3">
+                  <input
+                    [attr.checked]="paper.Option2  === onButtonQuesOPenSetAnswer ? true : null"
+                    name="answer"
+                    type="radio"
+                    value="{{ paper.Option2 }}"
+                    (change)="onRadioButtonChange($event)"
+                  />
+                  <span>{{ paper.Option2 }}</span>
+                </label>
+              </p>
+              <p>
+                <label class="h3">
+                  <input
+                    [attr.checked]="paper.Option3 === onButtonQuesOPenSetAnswer ? true : null"
+                    name="answer"
+                    type="radio"
+                    value="{{ paper.Option3 }}"
+                    (change)="onRadioButtonChange($event)"
+                  />
+                  <span>{{ paper.Option3 }}</span>
+                </label>
+              </p>
+              <p>
+                <label class="h3">
+                  <input
+                    [attr.checked]="paper.Option4  === onButtonQuesOPenSetAnswer ? true : null"
+                    name="answer"
+                    type="radio"
+                    value="{{ paper.Option4 }}"
+                    (change)="onRadioButtonChange($event)"
+                  />
+                  <span>{{ paper.Option4 }}</span>
+                </label>
+              </p>
+            </div>
+            <div style="display: inline-block">
+              <button
+                class="mt-3 btn waves-effect green darken-3"
+                (click)="onButton_Answer_Review_Click(true, false,paper.Qid)"
+              >
+                Answer
+              </button>
+              &nbsp;&nbsp;&nbsp;
+
+              <button
+                class="mt-3 btn waves-effect orange darken-3"
+                (click)="onButton_Answer_Review_Click(false, true,paper.Qid)"
+              >
+                Mark for review and Next
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <!-- Selected Answer Preview -->
+      <div class="col-md-3 mt-3" style="height: 73vh">
+        <div class="row">
+          <div class="col-md-12 center">
+            <table class="table table-bordered">
+              <tr>
+                <td colspan="4" class="center blue white-text">YOUR SCORE</td>
+              </tr>
+              <tr>
+                <td>Total Items</td>
+                <th>{{ totalItems }}</th>
+                <td>Unseen Items</td>
+                <th>{{ unseenItems }}</th>
+              </tr>
+              <tr>
+                <td class="green-text darken-3 ">Answered Items</td>
+                <th>{{ answeredItems }}</th>
+                <td class="orange-text darken-3">Review Items</td>
+                <th>{{ markReviewItems }}</th>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12" style="overflow-y: scroll; height: 50vh">
+            <ng-container *ngFor="let ua of userAnswered">
+              <button
+                (click)="QuestionOpenWithButton(ua.Qid)"
+                class="green darken-3 white-text"
+                style="
+                  padding: 20px;
+                  border-radius: 80px;
+                  width: 50px;
+                  height: 50px;
+                  line-height: 6px;
+                "
+                *ngIf="ua.answerBtn == true; else elseblock"
+              >
+                {{ ua.Qid }}
+              </button>
+              &nbsp;&nbsp;
+              <ng-template #elseblock>
+                <button
+                  (click)="QuestionOpenWithButton(ua.Qid)"
+                  class="orange darken-3 white-text"
+                  style="
+                    padding: 20px;
+                    border-radius: 80px;
+                    width: 50px;
+                    height: 50px;
+                    line-height: 6px;
+                  "
+                >
+                  {{ ua.Qid }}
+                </button>
+              </ng-template>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>
+
+<!-- SCORE SECTION -->
+
+<div
+  *ngIf="scoreStatus"
+  class="
+    row
+    d-flex
+    h-100
+    white
+    lighten-4
+    z-depth-2
+
+  "
+>
+  <div class="col-md-12  mt-5">
+     <div class="row">
+      <div class="col-md-12   center mt-5  ">
+        <!-- <h1 style=" font-size:60px;line-height:70px;font-family: 'Monoton', cursive;
+        "  class="h4" ><span class="red-text">K  </span> <span class="indigo-text">N</span></h1> -->
+        <strong>THANK YOU FOR JOINING US</strong>
+      </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12   center mt-2  ">
+        <h1 style=" font-size:60px;line-height:70px;font-family: 'Monoton', cursive;
+        "  class="h4" ><span class="red-text">TEST</span> &nbsp;&nbsp; <span class="indigo-text">SCORE</span></h1>
+      </div>
+     </div>
+     <div class="row mt-3">
+         <div class=" offset-md-3 col-md-6 mt-4" style="font-size: 20px;">
+             <!-- score display -->
+              <table class="table centered z-depth-1" >
+                 <tbody>
+                     <tr >
+                         <th  style="padding:20px">Exam Name</th>
+                         <td class="purple-text darken-3 text-start">{{examName?.coursename}}</td>
+                     </tr>
+                     <tr>
+                      <th style="padding:20px">Exam Taken Date</th>
+                      <td class="purple-text darken-3 text-start">{{currentDate | date}}</td>
+                     </tr>
+                     <tr>
+                      <th style="padding:20px">Email</th>
+                      <td class="purple-text darken-3 text-start">{{email}}</td>
+                     </tr>
+                     <tr>
+                      <th style="padding:20px">Final Result</th>
+                      <!-- <td class="purple-text darken-3 text-start">{{totalScore+'/'+ examPaper?.length}}</td> -->
+                      <td class="green-text darken-3 text-start">Passed</td>
+                     </tr>
+                 </tbody>
+              </table>
+         </div>
+         <div class="col-md-5">
+             <!-- feedback -->
+         </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12   center mt-3  ">
+        <button [disabled]="!true" class=" btn waves-effect orange darken-3 mt-3  " (click)="downloadReport()">Download Transcript
+          <i class="material-icons right">download</i>
+        </button>
+      </div>
+     </div>
+
+  </div>
+</div>

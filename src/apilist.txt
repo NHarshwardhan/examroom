@@ -1,0 +1,5 @@
+https://examhall.onrender.com/api/papers/CEH
+https://examhall.onrender.com/api/courses
+https://examhall.onrender.com/api/approvedStudent
+https://examhall.onrender.com/api/user/register
+https://examhall.onrender.com/api/user/login
